@@ -9,27 +9,16 @@
 // [“1234”, “1567”, “-2”, “computer science”] → [“-2”]
 // [“Russia”, “Denmark”, “Kazan”] → []
 
-string[] array1 = new string[8] {"Hello", "2", "world", ":-)", "1234", "1567", "-2", "computer science"};
-string[] array2 = new string[array1.Length];
-void SecondArrayOfThree(string[] array1, string[] array2)
+string [] startingArray = new string[] {"1234", "1567", "-2", "computer science"};
+string[] resultArray = new string [0];
+
+foreach (var item in startingArray)
 {
-    int count = 0;
-    for (int i = 0; i < array1.Length; i++)
+    if (item.Length <= 3)
     {
-    if(array1[i].Length <= 3)
-        {
-        array2[count] = array1[i];
-        count++;
-        }
+    Array.Resize(ref resultArray, resultArray.Length + 1);
+    resultArray [resultArray.Length-1] = item;
     }
 }
-void PrintArray(string[] array)
-{
-    for (int i = 0; i < array.Length; i++)
-    {
-        Console.Write($"{array[i]} ");
-    }
-    Console.WriteLine();
-}
-SecondArrayOfThree(array1, array2);
-PrintArray(array2);
+
+Console.WriteLine($"[{String.Join("; ", resultArray)}]");
